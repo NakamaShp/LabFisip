@@ -16,11 +16,20 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('dashboard');
     // Product
     Route::get('/Products',[ProductsController::class, 'index'])->name('Products.index');
-    Route::post('/Products',[ProductsController::class, 'Store'])->name('Products.Store');
     Route::get('/Products/Create',[ProductsController::class, 'Create'])->name('Products.Create');
+    Route::post('/Products',[ProductsController::class, 'Store'])->name('Products.Store');
+    Route::get('/Products/{product}/edit',[ProductsController::class, 'edit'])->name('Products.edit');
+    Route::put('/Products/{product}',[ProductsController::class, 'update'])->name('Products.update');
+    Route::delete('/Products/{product}', [ProductsController::class, 'destroy'])->name('Products.destroy');
+
     // Post
     Route::get('/Post',[PostController::class, 'index'])->name('Post.index');
     Route::get('/Post/Create',[PostController::class, 'Create'])->name('Post.Create');
+    Route::post('/Post',[PostController::class, 'Store'])->name('Post.Store');
+    Route::get('/Post/{post}/edit',[PostController::class, 'edit'])->name('Post.edit');
+    Route::put('/Post/{post}',[PostController::class, 'update'])->name('Post.update');
+    Route::delete('/Post/{post}', [PostController::class, 'destroy'])->name('Post.destroy');
+
     // Appointment
     Route::get('/Appointment',[AppointmentController::class, 'index'])->name('Appointment.index');
 });
